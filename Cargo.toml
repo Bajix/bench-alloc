@@ -1,0 +1,35 @@
+[package]
+authors = ["Thomas Sieverding <Thomas@bajix.com>"]
+edition = "2021"
+name = "bencher"
+version = "0.0.1"
+license = "MIT"
+publish = false
+
+[dependencies]
+const-array-init = "1.0.0"
+criterion = { version = "0.5", features = ["html_reports"] }
+
+[dev-dependencies]
+jemallocator = "0.5"
+
+[lib]
+test = false
+doctest = false
+bench = false
+
+[[bench]]
+name = "benchmarks"
+path = "src/lib.rs"
+harness = false
+doc = false
+
+[profile.release]
+lto = "fat"
+opt-level = 3
+codegen-units = 1
+
+[profile.bench]
+lto = "fat"
+opt-level = 3
+codegen-units = 1

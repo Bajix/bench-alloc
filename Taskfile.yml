@@ -1,0 +1,11 @@
+version: "3"
+
+env:
+  TARGET: aarch64-apple-darwin
+
+tasks:
+  bench:
+    env:
+      RUSTFLAGS: -C target-cpu=native
+    cmds:
+      - cargo bench --profile release -p bencher
